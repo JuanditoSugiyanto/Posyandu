@@ -1,0 +1,125 @@
+﻿body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh; 
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #f7e9cc;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    margin-top: 0px;
+   
+}
+
+.sidebar-header {
+    text-align: center;
+}
+
+.logo {
+    width: 100px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding-top: 80px;
+    margin: 0;
+}
+
+    .sidebar-nav ul li {
+        margin: 20px 0;
+    height: 36px;
+}
+
+        .sidebar-nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: #ffcc00;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    height: 100px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    padding-bottom:10px;
+    
+}
+
+    .profile span {
+        margin-right: 10px;
+    }
+
+.profile-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.WebLogo{
+    padding-left: 40px;
+    padding-right: 70px;
+    height: 95px;
+    width: 127px;
+}
+.This{
+   padding-left: 50px;
+}
+
+.content {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto; 
+}
+
+.left-header {
+    display: flex;
+    align-items: center;
+
+}.NameWelcome{
+     padding-left: 50px;
+     
+ }
+.DaftarAnakText {
+    padding-left: 70px;
+}
+.DaftarAnakText1 {
+    padding-left: 75px;
+}
+.DaftarAnakTB {
+    margin-left: 75px;
+    border-radius:9px;
+    height:25px;
+    margin-top: 5px;
+}
+
+.logoNav{
+    padding-right: 10px;
+    width: 39px;
+    height: 35px;
+}
+
+.cardTemplate {
+    padding-left: 75px;
+}
+
