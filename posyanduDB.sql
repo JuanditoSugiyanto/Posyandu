@@ -1,9 +1,9 @@
 ﻿CREATE DATABASE posyandu;
 
 CREATE TABLE balita (
-	NIK VARCHAR (16) PRIMARY KEY NOT NULL,
-	idAnak VARCHAR (255) NOT NULL,
+	idAnak VARCHAR (255) PRIMARY KEY NOT NULL,
 	namaOrantua VARCHAR (255) NOT NULL,
+	namaAnak VARCHAR (225) NOT NULL,
 	tanggalLahir DATE NOT NULL,
 	umur INT NOT NULL,
 	jenisKelamin VARCHAR (10) NOT NULL,
@@ -36,4 +36,36 @@ CREATE TABLE petugas(
 	peran Varchar (25) NOT NULL
 );
 
-	
+
+CREATE TABLE penerimaObatCacing (
+	FOREIGN KEY (idAnak) REFERENCES userAccount(idAnak),
+	FOREIGN KEY (namaAnak) REFERENCES userAccount(namaAnak),
+	pemberianAbendazole BIT NOT NULL,
+);
+
+CREATE TABLE polaMakan(
+	FOREIGN KEY (idAnak) REFERENCES userAccount(idAnak),
+	FOREIGN KEY (namaAnak) REFERENCES userAccount(namaAnak),
+	daftarMakan VARCHAR (100) NOT NULL,
+	intervensiGizi VARCHAR (100) NOT NULL,
+	teksturMakanan VARCHAR (100) NOT NULL,
+	frekuensiMakan VARCHAR (100) NOT NULL,
+);
+
+
+CREATE TABLE kebersihanGigiAnak (
+	FOREIGN KEY (idAnak) REFERENCES userAccount(idAnak),
+	FOREIGN KEY (namaAnak) REFERENCES userAccount(namaAnak),
+	FOREIGN KEY (jenisKelamin) REFERENCES userAccount(jenisKelamin),
+	tanggalPeriksa DATE NOT NULL,
+	kebersihanGigi BIT,
+	karies BIT
+);
+
+
+CREATE TABLE pemberianVitaminA(
+	FOREIGN KEY (idAnak) REFERENCES userAccount(idAnak),
+	FOREIGN KEY (namaAnak) REFERENCES userAccount(namaAnak),
+	FOREIGN KEY (jenisKelamin) REFERENCES userAccount(jenisKelamin),
+	jenisVitaminA VARCHAR(5) NOT NULL CHECK (jenisVitaminA IN ('BIRU', 'MERAH'))
+);
