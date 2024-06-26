@@ -20,7 +20,9 @@
             <asp:Label ID="LblPasswordReg" runat="server" Text="Password" CssClass="label"></asp:Label>
             <asp:TextBox ID="TxtPasswordReg" runat="server" CssClass="input" TextMode="Password"></asp:TextBox>
 
-            <asp:Button ID="BtnLogin" runat="server" Text="Login" CssClass="button" />
+            <asp:Button ID="BtnLogin" runat="server" Text="Login" CssClass="button" OnClick="BtnLogin_Click"/>
+            <br />
+            <asp:Label ID="ErrorMsg1" runat="server" Text="" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="Label1" runat="server" Text="Belum punya akun?"></asp:Label>
                <asp:HyperLink id="hyperlink1" NavigateUrl="RoleSelector.aspx" Text="Daftar di sini." runat="server"/> 

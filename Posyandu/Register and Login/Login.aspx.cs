@@ -13,5 +13,25 @@ namespace Posyandu.Register_and_Login
         {
 
         }
+
+        protected void BtnLogin_Click(object sender, EventArgs e)
+        {
+            string nik = TxtNikLogin.Text;
+            string password = TxtPasswordReg.Text;
+
+            DatabasePsoyanduEntities db = new DatabasePsoyanduEntities();
+
+            userAccount u = (from y in db.userAccounts where y.NIK.Equals(nik) && y.kataSandi.Equals(password) select y).FirstOrDefault();
+
+            if (u == null)
+            {
+                ErrorMsg1.Text = "User is Empty";
+            }
+            else
+            {
+                Response.Redirect("../AfterLogin/WebForm1.aspx");
+
+            }
+        }
     }
 }

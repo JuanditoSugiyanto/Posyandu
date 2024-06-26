@@ -14,6 +14,52 @@ namespace Posyandu.Register_and_Login
 
         }
 
-      
+        protected void BtnRegister_Click(object sender, EventArgs e)
+        {
+            string nama = TxtName.Text;
+            string tanggalLahir = HiddenFieldDatePicker.Value;
+            string password = TxtPasswordReg.Text;
+            string nik = TxtNikReg.Text;
+            string peran = "kader";
+
+            DateTime tanggalLahirParsed;
+
+            if(!DateTime.TryParse(tanggalLahir, out tanggalLahirParsed))
+            {
+                ErorMsg1.Text = "Format tanggal lahir salah, harap jangan di ubah";
+                return;
+            }
+
+            petuga p = new petuga();
+            p.namaPetugas = nama;
+            p.tanggalLahirKader = tanggalLahirParsed;
+            p.NIK = nik;
+            
+
+            userAccount a = new userAccount();
+            a.kataSandi = password;
+             a.peran = peran;
+            a.NIK = nik;
+            
+            if (IsNIKExists(nik))
+            {
+                ErorMsg1.Text = "NIK sudah ada harap cek kembali";
+                return;
+            }
+            DatabasePsoyanduEntities db = new DatabasePsoyanduEntities();         
+            db.userAccounts.Add(a);
+            db.petugas.Add(p);
+            db.SaveChanges();
+
+            Response.Redirect("Login.aspx");
+
+        }
+        private bool IsNIKExists(string nik)
+        {
+            using (DatabasePsoyanduEntities db = new DatabasePsoyanduEntities())
+            {
+                return db.userAccounts.Any(u => u.NIK == nik);
+            }
+        }
     }
 }

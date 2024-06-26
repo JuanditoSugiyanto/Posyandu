@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabasePsoyanduModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="balita">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="namaAnak" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tanggalLahir" Type="date" Nullable="false" />
+          <Property Name="umur" Type="int" Nullable="false" />
+          <Property Name="jenisKelamin" Type="varchar" MaxLength="10" />
+          <Property Name="alamat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="namaPosyandu" Type="varchar" MaxLength="255" />
+          <Property Name="beratBadan" Type="int" />
+          <Property Name="tinggiBadan" Type="int" />
+          <Property Name="statusGizi" Type="varchar" MaxLength="255" />
+          <Property Name="namaOrangtua" Type="varchar" MaxLength="100" />
+          <Property Name="NIK_OrangTua" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="kebersihanGigiAnak">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="namaAnak" />
+            <PropertyRef Name="tanggalPeriksa" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="namaAnak" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="jenisKelamin" Type="varchar" MaxLength="10" />
+          <Property Name="tanggalPeriksa" Type="date" Nullable="false" />
+          <Property Name="kebersihanGigi" Type="bit" />
+          <Property Name="karies" Type="bit" />
+        </EntityType>
+        <EntityType Name="orangtua">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="namaOrangtua" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="noTelp" Type="varchar" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="pemberianVitaminA">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="jenisVitaminA" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="penerimaObatCacing">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="namaAnak" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="namaAnak" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="pemberianAbendazole" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="petugas">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="namaPetugas" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="noTelp" Type="varchar" MaxLength="13" />
+          <Property Name="peran" Type="varchar" MaxLength="25" />
+          <Property Name="tanggalLahirKader" Type="date" />
+        </EntityType>
+        <EntityType Name="polaMakan">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="namaAnak" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="namaAnak" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="daftarMakan" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="intervensiGizi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="teksturMakanan" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="frekuensiMakan" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecordTimbangPersonal">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="Tanggal_Timbang" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="namaAnak" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Tanggal_Timbang" Type="date" Nullable="false" />
+          <Property Name="Berat_Badan" Type="int" Nullable="false" />
+          <Property Name="Tinggi_Badan" Type="int" Nullable="false" />
+          <Property Name="Status_Gizi" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userAccount">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="peran" Type="varchar" MaxLength="10" />
+          <Property Name="kataSandi" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__balita__NIK__06CD04F7">
+          <End Role="orangtua" Type="Self.orangtua" Multiplicity="1" />
+          <End Role="balita" Type="Self.balita" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="orangtua">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="balita">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__kebersihanG__NIK__17036CC0">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="kebersihanGigiAnak" Type="Self.kebersihanGigiAnak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="kebersihanGigiAnak">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orangtua__NIK__02FC7413">
+          <End Role="userAccount" Type="Self.userAccount" Multiplicity="1" />
+          <End Role="orangtua" Type="Self.orangtua" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="userAccount">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="orangtua">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pemberianVi__NIK__1AD3FDA4">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="pemberianVitaminA" Type="Self.pemberianVitaminA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="pemberianVitaminA">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__penerimaOba__NIK__10566F31">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="penerimaObatCacing" Type="Self.penerimaObatCacing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="penerimaObatCacing">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__petugas__NIK__0A9D95DB">
+          <End Role="userAccount" Type="Self.userAccount" Multiplicity="1" />
+          <End Role="petugas" Type="Self.petugas" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="userAccount">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="petugas">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__polaMakan__NIK__1332DBDC">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="polaMakan" Type="Self.polaMakan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="polaMakan">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecordTimba__NIK__0D7A0286">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="RecordTimbangPersonal" Type="Self.RecordTimbangPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="RecordTimbangPersonal">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabasePsoyanduModelStoreContainer">
+          <EntitySet Name="balita" EntityType="Self.balita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kebersihanGigiAnak" EntityType="Self.kebersihanGigiAnak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orangtua" EntityType="Self.orangtua" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pemberianVitaminA" EntityType="Self.pemberianVitaminA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="penerimaObatCacing" EntityType="Self.penerimaObatCacing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="petugas" EntityType="Self.petugas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="polaMakan" EntityType="Self.polaMakan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordTimbangPersonal" EntityType="Self.RecordTimbangPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userAccount" EntityType="Self.userAccount" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__balita__NIK__06CD04F7" Association="Self.FK__balita__NIK__06CD04F7">
+            <End Role="orangtua" EntitySet="orangtua" />
+            <End Role="balita" EntitySet="balita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__kebersihanG__NIK__17036CC0" Association="Self.FK__kebersihanG__NIK__17036CC0">
+            <End Role="balita" EntitySet="balita" />
+            <End Role="kebersihanGigiAnak" EntitySet="kebersihanGigiAnak" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orangtua__NIK__02FC7413" Association="Self.FK__orangtua__NIK__02FC7413">
+            <End Role="userAccount" EntitySet="userAccount" />
+            <End Role="orangtua" EntitySet="orangtua" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pemberianVi__NIK__1AD3FDA4" Association="Self.FK__pemberianVi__NIK__1AD3FDA4">
+            <End Role="balita" EntitySet="balita" />
+            <End Role="pemberianVitaminA" EntitySet="pemberianVitaminA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__penerimaOba__NIK__10566F31" Association="Self.FK__penerimaOba__NIK__10566F31">
+            <End Role="balita" EntitySet="balita" />
+            <End Role="penerimaObatCacing" EntitySet="penerimaObatCacing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__petugas__NIK__0A9D95DB" Association="Self.FK__petugas__NIK__0A9D95DB">
+            <End Role="userAccount" EntitySet="userAccount" />
+            <End Role="petugas" EntitySet="petugas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__polaMakan__NIK__1332DBDC" Association="Self.FK__polaMakan__NIK__1332DBDC">
+            <End Role="balita" EntitySet="balita" />
+            <End Role="polaMakan" EntitySet="polaMakan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecordTimba__NIK__0D7A0286" Association="Self.FK__RecordTimba__NIK__0D7A0286">
+            <End Role="balita" EntitySet="balita" />
+            <End Role="RecordTimbangPersonal" EntitySet="RecordTimbangPersonal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabasePsoyanduModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="balita">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaAnak" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tanggalLahir" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="umur" Type="Int32" Nullable="false" />
+          <Property Name="jenisKelamin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="alamat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaPosyandu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="beratBadan" Type="Int32" />
+          <Property Name="tinggiBadan" Type="Int32" />
+          <Property Name="statusGizi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="namaOrangtua" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NIK_OrangTua" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="orangtua" Relationship="Self.FK__balita__NIK__06CD04F7" FromRole="balita" ToRole="orangtua" />
+          <NavigationProperty Name="kebersihanGigiAnaks" Relationship="Self.FK__kebersihanG__NIK__17036CC0" FromRole="balita" ToRole="kebersihanGigiAnak" />
+          <NavigationProperty Name="pemberianVitaminA" Relationship="Self.FK__pemberianVi__NIK__1AD3FDA4" FromRole="balita" ToRole="pemberianVitaminA" />
+          <NavigationProperty Name="penerimaObatCacings" Relationship="Self.FK__penerimaOba__NIK__10566F31" FromRole="balita" ToRole="penerimaObatCacing" />
+          <NavigationProperty Name="polaMakans" Relationship="Self.FK__polaMakan__NIK__1332DBDC" FromRole="balita" ToRole="polaMakan" />
+          <NavigationProperty Name="RecordTimbangPersonals" Relationship="Self.FK__RecordTimba__NIK__0D7A0286" FromRole="balita" ToRole="RecordTimbangPersonal" />
+        </EntityType>
+        <EntityType Name="kebersihanGigiAnak">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="namaAnak" />
+            <PropertyRef Name="tanggalPeriksa" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaAnak" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jenisKelamin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tanggalPeriksa" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="kebersihanGigi" Type="Boolean" />
+          <Property Name="karies" Type="Boolean" />
+          <NavigationProperty Name="balita" Relationship="Self.FK__kebersihanG__NIK__17036CC0" FromRole="kebersihanGigiAnak" ToRole="balita" />
+        </EntityType>
+        <EntityType Name="orangtua">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaOrangtua" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="noTelp" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="balita" Relationship="Self.FK__balita__NIK__06CD04F7" FromRole="orangtua" ToRole="balita" />
+          <NavigationProperty Name="userAccount" Relationship="Self.FK__orangtua__NIK__02FC7413" FromRole="orangtua" ToRole="userAccount" />
+        </EntityType>
+        <EntityType Name="pemberianVitaminA">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jenisVitaminA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="balita" Relationship="Self.FK__pemberianVi__NIK__1AD3FDA4" FromRole="pemberianVitaminA" ToRole="balita" />
+        </EntityType>
+        <EntityType Name="penerimaObatCacing">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="namaAnak" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaAnak" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pemberianAbendazole" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="balita" Relationship="Self.FK__penerimaOba__NIK__10566F31" FromRole="penerimaObatCacing" ToRole="balita" />
+        </EntityType>
+        <EntityType Name="petuga">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaPetugas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="noTelp" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="peran" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="userAccount" Relationship="Self.FK__petugas__NIK__0A9D95DB" FromRole="petugas" ToRole="userAccount" />
+          <Property Name="tanggalLahirKader" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="polaMakan">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="namaAnak" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaAnak" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="daftarMakan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="intervensiGizi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="teksturMakanan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="frekuensiMakan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="balita" Relationship="Self.FK__polaMakan__NIK__1332DBDC" FromRole="polaMakan" ToRole="balita" />
+        </EntityType>
+        <EntityType Name="RecordTimbangPersonal">
+          <Key>
+            <PropertyRef Name="NIK" />
+            <PropertyRef Name="Tanggal_Timbang" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namaAnak" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tanggal_Timbang" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Berat_Badan" Type="Int32" Nullable="false" />
+          <Property Name="Tinggi_Badan" Type="Int32" Nullable="false" />
+          <Property Name="Status_Gizi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="balita" Relationship="Self.FK__RecordTimba__NIK__0D7A0286" FromRole="RecordTimbangPersonal" ToRole="balita" />
+        </EntityType>
+        <EntityType Name="userAccount">
+          <Key>
+            <PropertyRef Name="NIK" />
+          </Key>
+          <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="peran" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="kataSandi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="orangtua" Relationship="Self.FK__orangtua__NIK__02FC7413" FromRole="userAccount" ToRole="orangtua" />
+          <NavigationProperty Name="petuga" Relationship="Self.FK__petugas__NIK__0A9D95DB" FromRole="userAccount" ToRole="petugas" />
+        </EntityType>
+        <Association Name="FK__balita__NIK__06CD04F7">
+          <End Role="orangtua" Type="Self.orangtua" Multiplicity="1" />
+          <End Role="balita" Type="Self.balita" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="orangtua">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="balita">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__kebersihanG__NIK__17036CC0">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="kebersihanGigiAnak" Type="Self.kebersihanGigiAnak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="kebersihanGigiAnak">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pemberianVi__NIK__1AD3FDA4">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="pemberianVitaminA" Type="Self.pemberianVitaminA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="pemberianVitaminA">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__penerimaOba__NIK__10566F31">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="penerimaObatCacing" Type="Self.penerimaObatCacing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="penerimaObatCacing">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__polaMakan__NIK__1332DBDC">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="polaMakan" Type="Self.polaMakan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="polaMakan">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecordTimba__NIK__0D7A0286">
+          <End Role="balita" Type="Self.balita" Multiplicity="1" />
+          <End Role="RecordTimbangPersonal" Type="Self.RecordTimbangPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balita">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="RecordTimbangPersonal">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orangtua__NIK__02FC7413">
+          <End Role="userAccount" Type="Self.userAccount" Multiplicity="1" />
+          <End Role="orangtua" Type="Self.orangtua" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="userAccount">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="orangtua">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__petugas__NIK__0A9D95DB">
+          <End Role="userAccount" Type="Self.userAccount" Multiplicity="1" />
+          <End Role="petugas" Type="Self.petuga" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="userAccount">
+              <PropertyRef Name="NIK" />
+            </Principal>
+            <Dependent Role="petugas">
+              <PropertyRef Name="NIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabasePsoyanduEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="balitas" EntityType="Self.balita" />
+          <EntitySet Name="kebersihanGigiAnaks" EntityType="Self.kebersihanGigiAnak" />
+          <EntitySet Name="orangtuas" EntityType="Self.orangtua" />
+          <EntitySet Name="pemberianVitaminAs" EntityType="Self.pemberianVitaminA" />
+          <EntitySet Name="penerimaObatCacings" EntityType="Self.penerimaObatCacing" />
+          <EntitySet Name="petugas" EntityType="Self.petuga" />
+          <EntitySet Name="polaMakans" EntityType="Self.polaMakan" />
+          <EntitySet Name="RecordTimbangPersonals" EntityType="Self.RecordTimbangPersonal" />
+          <EntitySet Name="userAccounts" EntityType="Self.userAccount" />
+          <AssociationSet Name="FK__balita__NIK__06CD04F7" Association="Self.FK__balita__NIK__06CD04F7">
+            <End Role="orangtua" EntitySet="orangtuas" />
+            <End Role="balita" EntitySet="balitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__kebersihanG__NIK__17036CC0" Association="Self.FK__kebersihanG__NIK__17036CC0">
+            <End Role="balita" EntitySet="balitas" />
+            <End Role="kebersihanGigiAnak" EntitySet="kebersihanGigiAnaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pemberianVi__NIK__1AD3FDA4" Association="Self.FK__pemberianVi__NIK__1AD3FDA4">
+            <End Role="balita" EntitySet="balitas" />
+            <End Role="pemberianVitaminA" EntitySet="pemberianVitaminAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__penerimaOba__NIK__10566F31" Association="Self.FK__penerimaOba__NIK__10566F31">
+            <End Role="balita" EntitySet="balitas" />
+            <End Role="penerimaObatCacing" EntitySet="penerimaObatCacings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__polaMakan__NIK__1332DBDC" Association="Self.FK__polaMakan__NIK__1332DBDC">
+            <End Role="balita" EntitySet="balitas" />
+            <End Role="polaMakan" EntitySet="polaMakans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecordTimba__NIK__0D7A0286" Association="Self.FK__RecordTimba__NIK__0D7A0286">
+            <End Role="balita" EntitySet="balitas" />
+            <End Role="RecordTimbangPersonal" EntitySet="RecordTimbangPersonals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orangtua__NIK__02FC7413" Association="Self.FK__orangtua__NIK__02FC7413">
+            <End Role="userAccount" EntitySet="userAccounts" />
+            <End Role="orangtua" EntitySet="orangtuas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__petugas__NIK__0A9D95DB" Association="Self.FK__petugas__NIK__0A9D95DB">
+            <End Role="userAccount" EntitySet="userAccounts" />
+            <End Role="petugas" EntitySet="petugas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabasePsoyanduModelStoreContainer" CdmEntityContainer="DatabasePsoyanduEntities">
+          <EntitySetMapping Name="balitas">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.balita">
+              <MappingFragment StoreEntitySet="balita">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="namaAnak" ColumnName="namaAnak" />
+                <ScalarProperty Name="tanggalLahir" ColumnName="tanggalLahir" />
+                <ScalarProperty Name="umur" ColumnName="umur" />
+                <ScalarProperty Name="jenisKelamin" ColumnName="jenisKelamin" />
+                <ScalarProperty Name="alamat" ColumnName="alamat" />
+                <ScalarProperty Name="namaPosyandu" ColumnName="namaPosyandu" />
+                <ScalarProperty Name="beratBadan" ColumnName="beratBadan" />
+                <ScalarProperty Name="tinggiBadan" ColumnName="tinggiBadan" />
+                <ScalarProperty Name="statusGizi" ColumnName="statusGizi" />
+                <ScalarProperty Name="namaOrangtua" ColumnName="namaOrangtua" />
+                <ScalarProperty Name="NIK_OrangTua" ColumnName="NIK_OrangTua" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kebersihanGigiAnaks">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.kebersihanGigiAnak">
+              <MappingFragment StoreEntitySet="kebersihanGigiAnak">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="namaAnak" ColumnName="namaAnak" />
+                <ScalarProperty Name="jenisKelamin" ColumnName="jenisKelamin" />
+                <ScalarProperty Name="tanggalPeriksa" ColumnName="tanggalPeriksa" />
+                <ScalarProperty Name="kebersihanGigi" ColumnName="kebersihanGigi" />
+                <ScalarProperty Name="karies" ColumnName="karies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orangtuas">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.orangtua">
+              <MappingFragment StoreEntitySet="orangtua">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="namaOrangtua" ColumnName="namaOrangtua" />
+                <ScalarProperty Name="noTelp" ColumnName="noTelp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pemberianVitaminAs">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.pemberianVitaminA">
+              <MappingFragment StoreEntitySet="pemberianVitaminA">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="jenisVitaminA" ColumnName="jenisVitaminA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="penerimaObatCacings">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.penerimaObatCacing">
+              <MappingFragment StoreEntitySet="penerimaObatCacing">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="namaAnak" ColumnName="namaAnak" />
+                <ScalarProperty Name="pemberianAbendazole" ColumnName="pemberianAbendazole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="petugas">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.petuga">
+              <MappingFragment StoreEntitySet="petugas">
+                <ScalarProperty Name="tanggalLahirKader" ColumnName="tanggalLahirKader" />
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="namaPetugas" ColumnName="namaPetugas" />
+                <ScalarProperty Name="noTelp" ColumnName="noTelp" />
+                <ScalarProperty Name="peran" ColumnName="peran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="polaMakans">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.polaMakan">
+              <MappingFragment StoreEntitySet="polaMakan">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="namaAnak" ColumnName="namaAnak" />
+                <ScalarProperty Name="daftarMakan" ColumnName="daftarMakan" />
+                <ScalarProperty Name="intervensiGizi" ColumnName="intervensiGizi" />
+                <ScalarProperty Name="teksturMakanan" ColumnName="teksturMakanan" />
+                <ScalarProperty Name="frekuensiMakan" ColumnName="frekuensiMakan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordTimbangPersonals">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.RecordTimbangPersonal">
+              <MappingFragment StoreEntitySet="RecordTimbangPersonal">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="namaAnak" ColumnName="namaAnak" />
+                <ScalarProperty Name="Tanggal_Timbang" ColumnName="Tanggal_Timbang" />
+                <ScalarProperty Name="Berat_Badan" ColumnName="Berat_Badan" />
+                <ScalarProperty Name="Tinggi_Badan" ColumnName="Tinggi_Badan" />
+                <ScalarProperty Name="Status_Gizi" ColumnName="Status_Gizi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userAccounts">
+            <EntityTypeMapping TypeName="DatabasePsoyanduModel.userAccount">
+              <MappingFragment StoreEntitySet="userAccount">
+                <ScalarProperty Name="NIK" ColumnName="NIK" />
+                <ScalarProperty Name="peran" ColumnName="peran" />
+                <ScalarProperty Name="kataSandi" ColumnName="kataSandi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
