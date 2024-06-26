@@ -25,7 +25,7 @@ namespace Posyandu.Register_and_Login
 
             if (u == null)
             {
-                ErrorMsg1.Text = "User is Empty";
+                ErrorMsg1.Text = "User is Empty woowwoowoww";
             }
             else
             {
