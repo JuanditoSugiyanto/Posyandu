@@ -42,6 +42,9 @@
           <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="namaOrangtua" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="noTelp" Type="varchar" MaxLength="13" />
+          <Property Name="RT" Type="varchar" MaxLength="5" />
+          <Property Name="RW" Type="varchar" MaxLength="5" />
+          <Property Name="tanggalLahirorangtua" Type="date" />
         </EntityType>
         <EntityType Name="pemberianVitaminA">
           <Key>
@@ -290,6 +293,9 @@
           <Property Name="noTelp" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="balita" Relationship="Self.FK__balita__NIK__06CD04F7" FromRole="orangtua" ToRole="balita" />
           <NavigationProperty Name="userAccount" Relationship="Self.FK__orangtua__NIK__02FC7413" FromRole="orangtua" ToRole="userAccount" />
+          <Property Name="RT" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="RW" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="tanggalLahirorangtua" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="pemberianVitaminA">
           <Key>
@@ -534,6 +540,9 @@
           <EntitySetMapping Name="orangtuas">
             <EntityTypeMapping TypeName="DatabasePsoyanduModel.orangtua">
               <MappingFragment StoreEntitySet="orangtua">
+                <ScalarProperty Name="tanggalLahirorangtua" ColumnName="tanggalLahirorangtua" />
+                <ScalarProperty Name="RW" ColumnName="RW" />
+                <ScalarProperty Name="RT" ColumnName="RT" />
                 <ScalarProperty Name="NIK" ColumnName="NIK" />
                 <ScalarProperty Name="namaOrangtua" ColumnName="namaOrangtua" />
                 <ScalarProperty Name="noTelp" ColumnName="noTelp" />

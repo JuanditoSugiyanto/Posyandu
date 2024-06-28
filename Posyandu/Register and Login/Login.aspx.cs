@@ -29,7 +29,16 @@ namespace Posyandu.Register_and_Login
             }
             else
             {
-                Response.Redirect("../AfterLogin/WebForm1.aspx");
+                string peran = u.peran;
+
+                if(peran == "kader")
+                {
+                    Response.Redirect("../AfterLoginKader/WebForm1Kader.aspx");
+                }else if(peran == "orangtua")
+                {
+                    Response.Redirect("../AfterLoginOrtu/WebForm1Ortu.aspx");
+                }
+                
 
             }
         }

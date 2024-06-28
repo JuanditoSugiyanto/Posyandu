@@ -17,6 +17,9 @@ namespace Posyandu
         public string NIK { get; set; }
         public string namaOrangtua { get; set; }
         public string noTelp { get; set; }
+        public string RT { get; set; }
+        public string RW { get; set; }
+        public Nullable<System.DateTime> tanggalLahirorangtua { get; set; }
     
         public virtual balita balita { get; set; }
         public virtual userAccount userAccount { get; set; }

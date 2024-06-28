@@ -37,6 +37,7 @@ namespace Posyandu.Register_and_Login
             
 
             userAccount a = new userAccount();
+    
             a.kataSandi = password;
              a.peran = peran;
             a.NIK = nik;

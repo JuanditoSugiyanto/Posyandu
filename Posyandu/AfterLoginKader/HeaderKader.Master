@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HeaderKader.master.cs" Inherits="Posyandu.AfterLoginKader.HeaderKader" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posyandu Dashboard</title>
+ 
+    <link href="../Content/styles.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<header class="main-header">
+               <div class="left-header">
+                <img src="../Content/Posyandu%202021%20Logo%20(PNG720p)%20-%20Vector69Com%201.png" class="WebLogo">
+                <div class="navText">
+                    <ul>
+                       <b class ="This">Homepage</b>
+                        <b class ="This">Profile Kader</b>
+                    </ul>
+                </div>
+            </div>
+                    <div class="profile">
+                        <span>Siti Mursidah</span>
+                        <img src="../Content/milos%20.png" alt="Profile Picture" class="profile-pic">
+                    </div>
+                </header>
+                
+        <div class="container">
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li>
+                            <img src="../Content/pngwing%201.png" style="width: 37px" class="logoNav" /><a href="#" style="font-weight: bold; font-size: 15pt;">Halaman Utama</a></li>
+                        <li>
+                            <img src="../Content/clipboard-55-512.png" style="width: 36px; height: 33px" class="logoNav"/><a href="#" style="font-weight: bold; font-size: 15pt;">Daftar Hadir Kader</a></li>
+                        <li>
+                            <img src="../Content/children-kids-icon.png" style="width: 36px; height: 29px" class="logoNav"/><a href="#" style="font-weight: bold; font-size: 15pt;">Daftar Hadir Anak</a></li>
+                        <li>
+                            <img src="../Content/kisspng-vector-graphics-computer-icons-encapsulated-postsc-vector-newspaper-flat-transparent-amp-png-clipar-5cd0c069bf83a4.6129432115571846177845.png" style="height: 36px; width: 39px" class="logoNav"/><a href="#" style="font-weight: bold; height: 15px;" class="txtLaporanccd">Laporan</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="main-content">
+                <section class="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </section>
+            </main>
+        </div>
+    </form>
+</body>
+</html>

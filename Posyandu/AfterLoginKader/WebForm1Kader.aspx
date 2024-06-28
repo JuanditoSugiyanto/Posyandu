@@ -1,10 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AfterLogin/Header.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Posyandu.AfterLogin.WebForm1" %>
-
-<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AfterLoginKader/HeaderKader.Master" AutoEventWireup="true" CodeBehind="WebForm1Kader.aspx.cs" Inherits="Posyandu.AfterLoginKader.WebForm1Kader" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form1" runat="server">
+        <form id="form1" runat="server">
     <div>
         <br />
         <asp:Label runat="server" Text="Selamat Datang, Siti Mursidah" Font-Bold="True" Font-Size="25pt" class ="NameWelcome"></asp:Label>
@@ -36,5 +34,4 @@
 </div>
 
     </form>
-
 </asp:Content>

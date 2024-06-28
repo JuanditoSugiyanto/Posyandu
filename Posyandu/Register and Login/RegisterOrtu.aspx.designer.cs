@@ -105,6 +105,15 @@ namespace Posyandu.Register_and_Login
         protected global::System.Web.UI.WebControls.Label LblTanggalLahirReg;
 
         /// <summary>
+        /// HiddenFieldDatePicker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldDatePicker;
+
+        /// <summary>
         /// LblPasswordReg control.
         /// </summary>
         /// <remarks>
@@ -148,5 +157,14 @@ namespace Posyandu.Register_and_Login
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnRegister;
+
+        /// <summary>
+        /// ErorMsg1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErorMsg1;
     }
 }

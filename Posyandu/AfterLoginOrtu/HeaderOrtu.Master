@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Header.master.cs" Inherits="Posyandu.AfterLogin.Header" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HeaderOrtu.master.cs" Inherits="Posyandu.AfterLoginOrtu.HeaderOrtu" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posyandu Dashboard</title>
  
-    <link href="../Content/styles.css" rel="stylesheet" />
+    <link href="../Content/stylesOrtu.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

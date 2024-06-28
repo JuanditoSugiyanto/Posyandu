@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterOrtu.aspx.cs" Inherits="Posyandu.Register_and_Login.RegisterOrtu" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterOrtu.aspx.cs" Inherits="Posyandu.Register_and_Login.RegisterOrtu" %>
 
 <!DOCTYPE html>
 
@@ -11,11 +11,17 @@
     <link href="../Content/stylesRegOrtu.css" rel="stylesheet" />
     <script>
         $(function () {
-            $("#datepicker").datepicker({
-                changeMonth: true,
-                changeYear: true
-            });
-        });
+            var hiddenFieldId = '<%= HiddenFieldDatePicker.ClientID %>';
+             $("#datepicker").datepicker({
+                 changeMonth: true,
+                 changeYear: true,
+                 dateFormat: "yy-mm-dd",
+                 yearRange: "1900:2050",
+                 onSelect: function (dateText) {
+                     $('#' + hiddenFieldId).val(dateText);
+                 }
+             });
+         });
     </script>
 </head>
 <body>
@@ -39,6 +45,8 @@
 
             <asp:Label ID="LblTanggalLahirReg" runat="server" Text="Tanggal Lahir"></asp:Label>
             <input type="text" id="datepicker" class="input" />
+            <asp:HiddenField ID="HiddenFieldDatePicker" runat="server" />
+
 
             <asp:Label ID="LblPasswordReg" runat="server" Text="Password"></asp:Label>
             <asp:TextBox ID="TxtPasswordReg" runat="server" CssClass="input" TextMode="Password"></asp:TextBox>
@@ -46,9 +54,9 @@
             <asp:Label ID="LblNikReg" runat="server" Text="Masukkan NIK Anda"></asp:Label>
             <asp:TextBox ID="TxtNikReg" runat="server" CssClass="input"></asp:TextBox>
 
-            <asp:Button ID="BtnRegister" runat="server" Text="Register" CssClass="button" />
-
-            
+            <asp:Button ID="BtnRegister" runat="server" Text="Register" CssClass="button" OnClick="BtnRegister_Click"/> 
+             <br />
+             <asp:Label ID="ErorMsg1" runat="server" Text="" ForeColor="#FF3300"></asp:Label>
         </div>
     </form>
 </body>
