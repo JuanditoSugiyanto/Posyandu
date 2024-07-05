@@ -11,6 +11,8 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+ <body>
+     <form id="form1" runat="server">
 <header class="main-header">
                <div class="left-header">
                 <img src="../Content/Posyandu%202021%20Logo%20(PNG720p)%20-%20Vector69Com%201.png" class="WebLogo">

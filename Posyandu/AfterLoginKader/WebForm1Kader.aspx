@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <form id="form1" runat="server">
+        
     <div>
         <br />
         <asp:Label runat="server" Text="Selamat Datang, Siti Mursidah" Font-Bold="True" Font-Size="25pt" class ="NameWelcome"></asp:Label>
@@ -15,11 +15,14 @@
         <asp:Label runat="server" Text="Nama/ ID Anak" Font-Bold="True" class="DaftarAnakText1"></asp:Label>
         <br />
         <asp:TextBox runat="server" class="DaftarAnakTB" BorderStyle="Inset" Width="548px"></asp:TextBox>
+        
+        
 
         <br />
         <br />
         <br />
         <br />
+        
 
         <img src="../Content/Group%2027.png" class="cardTemplate"/>
 
@@ -33,5 +36,5 @@
         </asp:Chart>
 </div>
 
-    </form>
+   
 </asp:Content>
