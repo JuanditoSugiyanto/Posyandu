@@ -25,7 +25,7 @@
                 </div>
             </div>
                     <div class="profile">
-                        <span>Siti Mursidah</span>
+                        <asp:Label ID="LabelName" runat="server" Text="Nama"></asp:Label>
                         <img src="../Content/milos%20.png" alt="Profile Picture" class="profile-pic">
                     </div>
                 </header>

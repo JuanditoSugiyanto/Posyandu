@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Posyandu.AfterLoginOrtu
+namespace Posyandu.NewFolder1
 {
 
 
-    public partial class HeaderOrtu
+    public partial class Site1
     {
 
         /// <summary>
@@ -31,15 +31,6 @@ namespace Posyandu.AfterLoginOrtu
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// LabelName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelName;
 
         /// <summary>
         /// ContentPlaceHolder1 control.

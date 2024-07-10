@@ -25,7 +25,9 @@
             <asp:Label ID="ErrorMsg1" runat="server" Text="" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="Label1" runat="server" Text="Belum punya akun?"></asp:Label>
-               <asp:HyperLink id="hyperlink1" NavigateUrl="RoleSelector.aspx" Text="Daftar di sini." runat="server"/> 
+               <asp:HyperLink id="hyperlink1" NavigateUrl="RoleSelector.aspx" Text="Daftar di sini." runat="server"/>
+
+            
 
         </div>
     </form>

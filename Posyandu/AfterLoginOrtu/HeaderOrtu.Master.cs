@@ -12,6 +12,24 @@ namespace Posyandu.AfterLoginOrtu
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+            {
+                string nama = Session["UserName"] as string;
+
+                if (!string.IsNullOrEmpty(nama))
+                {
+                    LabelName.Text = nama;
+                }
+                else
+                {
+                    LabelName.Text = "Guest";
+                    if (Session["UserName"] == null)
+                    {
+                        LabelName.Text += " (Session is null)";
+                    }
+                }
+            }
+            
         }
     }
 }

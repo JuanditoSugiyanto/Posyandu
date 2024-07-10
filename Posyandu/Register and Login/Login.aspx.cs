@@ -31,15 +31,43 @@ namespace Posyandu.Register_and_Login
             {
                 string peran = u.peran;
 
-                if(peran == "kader")
+                string userName = "";
+                if (peran == "kader")
                 {
+                    petuga k = (from n in db.petugas where n.NIK.Equals(nik) select n).FirstOrDefault();
+                    userName = k?.namaPetugas;
+                }
+                else if (peran == "orangtua")
+                {
+                    orangtua o = (from k in db.orangtuas
+                                  where k.NIK.Equals(nik)
+                                  select k).FirstOrDefault();
+                    userName = o?.namaOrangtua;
+                    
+
+                    
+                }
+
+                Session["UserName"] = userName;
+                if (Session["UserName"] == null)
+                {
+                    ErrorMsg1.Text = "Session not set";
+                    return;
+                }
+
+                if (peran == "kader")
+                {
+
                     Response.Redirect("../AfterLoginKader/WebForm1Kader.aspx");
                 }else if(peran == "orangtua")
-                {
+                {             
                     Response.Redirect("../AfterLoginOrtu/WebForm1Ortu.aspx");
                 }
-                
 
+                if (Session["UserName"] == null)
+                {
+                    ErrorMsg1.Text = "Session not set";
+                }
             }
         }
     }
