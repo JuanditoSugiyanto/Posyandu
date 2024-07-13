@@ -11,34 +11,43 @@ namespace Posyandu.AfterLoginKader
 {
 
 
-    public partial class WebForm1Kader
+    public partial class ControlAnak
     {
 
         /// <summary>
-        /// TxtSearch control.
+        /// LblNamaAnak control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtSearch;
+        protected global::System.Web.UI.WebControls.Label LblNamaAnak;
 
         /// <summary>
-        /// BtnSearch control.
+        /// LabelNama control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSearch;
+        protected global::System.Web.UI.WebControls.Label LabelNama;
 
         /// <summary>
-        /// GridView1 control.
+        /// LblNamaOrangTua control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Label LblNamaOrangTua;
+
+        /// <summary>
+        /// LblOrtu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblOrtu;
     }
 }

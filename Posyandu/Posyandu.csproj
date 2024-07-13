@@ -76,7 +76,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AfterLoginKader\ControlAnak.aspx" />
+    <Content Include="AfterLoginKader\ControlPenimbangan.aspx" />
     <Content Include="AfterLoginKader\WebForm1Kader.aspx" />
+    <Content Include="AfterLoginOrtu\DetaiAnak.aspx" />
+    <Content Include="AfterLoginOrtu\TambahAnak.aspx" />
     <Content Include="AfterLoginOrtu\WebForm1Ortu.aspx" />
     <Content Include="App_Data\DatabasePsoyandu.mdf" />
     <Content Include="App_Data\DatabasePsoyandu_log.ldf">
@@ -137,6 +141,27 @@
     <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfterLoginKader\ControlAnak.aspx.cs">
+      <DependentUpon>ControlAnak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlAnak.aspx.designer.cs">
+      <DependentUpon>ControlAnak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlPenimbangan.aspx.cs">
+      <DependentUpon>ControlPenimbangan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlPenimbangan.aspx.designer.cs">
+      <DependentUpon>ControlPenimbangan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AfterLoginKader\HeaderChild.Master.cs">
+      <DependentUpon>HeaderChild.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginKader\HeaderChild.Master.designer.cs">
+      <DependentUpon>HeaderChild.Master</DependentUpon>
+    </Compile>
     <Compile Include="AfterLoginKader\HeaderKader.Master.cs">
       <DependentUpon>HeaderKader.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -151,12 +176,26 @@
     <Compile Include="AfterLoginKader\WebForm1Kader.aspx.designer.cs">
       <DependentUpon>WebForm1Kader.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AfterLoginOrtu\DetaiAnak.aspx.cs">
+      <DependentUpon>DetaiAnak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginOrtu\DetaiAnak.aspx.designer.cs">
+      <DependentUpon>DetaiAnak.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AfterLoginOrtu\HeaderOrtu.Master.cs">
       <DependentUpon>HeaderOrtu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AfterLoginOrtu\HeaderOrtu.Master.designer.cs">
       <DependentUpon>HeaderOrtu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AfterLoginOrtu\TambahAnak.aspx.cs">
+      <DependentUpon>TambahAnak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginOrtu\TambahAnak.aspx.designer.cs">
+      <DependentUpon>TambahAnak.aspx</DependentUpon>
     </Compile>
     <Compile Include="AfterLoginOrtu\WebForm1Ortu.aspx.cs">
       <DependentUpon>WebForm1Ortu.aspx</DependentUpon>
@@ -285,6 +324,7 @@
     <Content Include="AfterLoginOrtu\HeaderOrtu.Master" />
     <Content Include="AfterLoginKader\HeaderKader.Master" />
     <Content Include="NewFolder1\Site1.Master" />
+    <Content Include="AfterLoginKader\HeaderChild.Master" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />

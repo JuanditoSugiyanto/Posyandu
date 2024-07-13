@@ -47,7 +47,7 @@ namespace Posyandu.Register_and_Login
 
                     
                 }
-
+                Session["UserNIK"] = nik;
                 Session["UserName"] = userName;
                 if (Session["UserName"] == null)
                 {
@@ -62,6 +62,7 @@ namespace Posyandu.Register_and_Login
                 }else if(peran == "orangtua")
                 {             
                     Response.Redirect("../AfterLoginOrtu/WebForm1Ortu.aspx");
+
                 }
 
                 if (Session["UserName"] == null)
