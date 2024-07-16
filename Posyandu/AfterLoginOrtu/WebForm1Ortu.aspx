@@ -18,6 +18,7 @@
             <asp:BoundField DataField="namaPosyandu" HeaderText="Nama Posyandu" />
             <asp:BoundField DataField="beratBadan" HeaderText="Berat Badan" />
             <asp:BoundField DataField="tinggiBadan" HeaderText="Tinggi Badan" />
+            <asp:BoundField DataField="zScore" HeaderText="Z-Score" DataFormatString="{0:F2}" HtmlEncode="False" />
             <asp:BoundField DataField="statusGizi" HeaderText="Status Gizi" />
         </Columns>
     </asp:GridView>

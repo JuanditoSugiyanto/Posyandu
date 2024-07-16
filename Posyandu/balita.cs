@@ -31,7 +31,7 @@ namespace Posyandu
         public string alamat { get; set; }
         public string namaPosyandu { get; set; }
         public Nullable<int> beratBadan { get; set; }
-        public Nullable<int> tinggiBadan { get; set; }
+        public Nullable<double> tinggiBadan { get; set; }
         public string statusGizi { get; set; }
         public string namaOrangtua { get; set; }
         public string NIK_OrangTua { get; set; }
@@ -46,5 +46,6 @@ namespace Posyandu
         public virtual ICollection<polaMakan> polaMakans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RecordTimbangPersonal> RecordTimbangPersonals { get; set; }
+        public virtual orangtua orangtua1 { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -36,8 +37,8 @@ namespace Posyandu.AfterLoginKader
                 return;
             }
 
-            DateTime tanggalPemeriksaan = DateTime.Parse(HiddenFieldDatePicker.Value); 
-            int tinggiBadan = int.Parse(TxtTinggiBadan.Text); 
+            DateTime tanggalPemeriksaan = DateTime.Today;
+            double tinggiBadan = double.Parse(TxtTinggiBadan.Text); 
             int beratBadan = int.Parse(TextBox2.Text); 
 
             // Save data to the database
@@ -47,18 +48,34 @@ namespace Posyandu.AfterLoginKader
             {
                 anak.beratBadan = beratBadan;
                 anak.tinggiBadan = tinggiBadan;
+                var existingRecord = db.RecordTimbangPersonals.FirstOrDefault(r => r.NIK == nik && DbFunctions.TruncateTime(r.Tanggal_Timbang) == tanggalPemeriksaan.Date);
+
+
+                if (existingRecord != null)
+                {
+                    // Update existing record
+                    existingRecord.Berat_Badan = beratBadan;
+                    existingRecord.Tinggi_Badan = tinggiBadan;
+                    existingRecord.Status_Gizi = "placeholder";
+                }
+                else
+                {
+                    // Create new record
+                    RecordTimbangPersonal r = new RecordTimbangPersonal();
+                    r.NIK = nik;
+                    r.Tanggal_Timbang = tanggalPemeriksaan;
+                    r.Berat_Badan = beratBadan;
+                    r.Tinggi_Badan = tinggiBadan;
+                    r.namaAnak = anak.namaAnak;
+                    r.Status_Gizi = "placeholder";
+
+                    db.RecordTimbangPersonals.Add(r);
+                }
+
+
             }
 
-            RecordTimbangPersonal r = new RecordTimbangPersonal(); 
-            r.NIK = nik;
-            r.Tanggal_Timbang = tanggalPemeriksaan;
-            r.Berat_Badan = beratBadan;
-            r.Tinggi_Badan = beratBadan;
-            r.namaAnak = anak.namaAnak;
-            r.Status_Gizi = "placeholder";
 
-          
-            db.RecordTimbangPersonals.Add(r);
             db.SaveChanges();
 
             // Optionally, redirect to another page after saving

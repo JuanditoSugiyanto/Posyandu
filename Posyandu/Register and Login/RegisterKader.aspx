@@ -38,7 +38,7 @@
          
 
             <asp:Label ID="LblTanggalLahirReg" runat="server" Text="Tanggal Lahir"></asp:Label>
-            <input type="text" id="datepicker" class="input" />
+            <input type="text" id="datepicker" class="input" readonly="true"/>
             <asp:HiddenField ID="HiddenFieldDatePicker" runat="server" />
 
             <asp:Label ID="LblPasswordReg" runat="server" Text="Password"></asp:Label>

@@ -1,0 +1,1 @@
+﻿ALTER TABLE balita ALTER COLUMN tinggiBadan FLOAT;

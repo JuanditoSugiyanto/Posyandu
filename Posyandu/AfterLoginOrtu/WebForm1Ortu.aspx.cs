@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Posyandu.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace Posyandu.AfterLoginOrtu
 {
@@ -34,9 +36,15 @@ namespace Posyandu.AfterLoginOrtu
 
             using (DatabasePsoyanduEntities db = new DatabasePsoyanduEntities())
             {
-                var balitas = from b in db.balitas where b.NIK_OrangTua == nikOrangTua
-                              select new
-                              {
+                growthUtility utility = new growthUtility();    
+                var balitasQuery = from b in db.balitas
+                                   select b;
+                var balitasFromDb = balitasQuery.ToList();
+                var balitas = db.balitas
+                            .Where(b => b.NIK_OrangTua == nikOrangTua)
+                            .ToList()
+                            .Select(b => new
+                            {
                                   b.NIK,
                                   b.namaAnak,
                                   b.tanggalLahir,
@@ -46,9 +54,12 @@ namespace Posyandu.AfterLoginOrtu
                                   b.namaPosyandu,
                                   b.beratBadan,
                                   b.tinggiBadan,
-                                  b.statusGizi,
+                                  statusGizi = (b.tinggiBadan == null || b.tinggiBadan == 0) ? "" :
+                                  utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).classification,
+                                  zScore = (b.tinggiBadan == null || b.tinggiBadan == 0) ? (double?)null :
+                                  Math.Round(utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2),
                                   b.NIK_OrangTua
-                              };
+                              });
 
                 GridView1.DataSource = balitas.ToList();
                 GridView1.DataBind();

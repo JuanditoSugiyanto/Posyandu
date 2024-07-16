@@ -36,7 +36,7 @@
     <br />
     <asp:Label ID="LblTanggalLahirReg" runat="server" Text="Tanggal Lahir"></asp:Label>
     <br />
-    <input type="text" id="datepicker" class="input" />
+    <input type="text" id="datepicker" class="input" readonly="readonly"/>
     <asp:HiddenField ID="HiddenFieldDatePicker" runat="server" />
     <br />
     <asp:Label ID="LblAlamatAnak" runat="server" Text="Alamat"></asp:Label>

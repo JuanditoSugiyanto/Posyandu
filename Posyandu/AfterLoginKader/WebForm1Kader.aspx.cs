@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Posyandu.Utilities;
 
 namespace Posyandu.AfterLoginKader
 {
     public partial class WebForm1Kader : System.Web.UI.Page
     {
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -22,7 +23,6 @@ namespace Posyandu.AfterLoginKader
         {
             BindGridView();
         }
-
 
         private void BindGridView()
         {
@@ -42,7 +42,11 @@ namespace Posyandu.AfterLoginKader
                 {
                     balitasQuery = balitasQuery.Where(b => b.namaAnak.Contains(search) || b.NIK.Contains(search));
                 }
-                var balitas = balitasQuery.Select(b => new
+
+                var balitasFromDb = balitasQuery.ToList();
+                growthUtility utility = new growthUtility();
+                // Calculate Z-score and classification in memory
+                var balitas = balitasFromDb.Select(b => new
                 {
                     b.NIK,
                     b.namaAnak,
@@ -53,15 +57,18 @@ namespace Posyandu.AfterLoginKader
                     b.namaPosyandu,
                     b.beratBadan,
                     b.tinggiBadan,
-                    b.statusGizi,
+                    statusGizi = (b.tinggiBadan == null || b.tinggiBadan == 0) ? "" :
+                    utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).classification,
+                    zScore = (b.tinggiBadan == null || b.tinggiBadan == 0) ? (double?)null :
+                    Math.Round(utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2),
                     b.namaOrangtua
-                });
+                }).ToList();
 
-                GridView1.DataSource = balitas.ToList();
+                GridView1.DataSource = balitas;
                 GridView1.DataBind();
             }
         }
 
-       
+        
     }
- }
+}

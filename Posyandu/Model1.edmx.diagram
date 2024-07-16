@@ -22,6 +22,7 @@
         <AssociationConnector Association="DatabasePsoyanduModel.FK__RecordTimba__NIK__0D7A0286" ManuallyRouted="false" />
         <AssociationConnector Association="DatabasePsoyanduModel.FK__orangtua__NIK__02FC7413" ManuallyRouted="false" />
         <AssociationConnector Association="DatabasePsoyanduModel.FK__petugas__NIK__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabasePsoyanduModel.FK_balita_NIK_OrangTua" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

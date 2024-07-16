@@ -44,7 +44,7 @@
             <asp:TextBox ID="TxtTelp" runat="server" CssClass="input"></asp:TextBox>
 
             <asp:Label ID="LblTanggalLahirReg" runat="server" Text="Tanggal Lahir"></asp:Label>
-            <input type="text" id="datepicker" class="input" />
+            <input type="text" id="datepicker" class="input" readonly="true"/>
             <asp:HiddenField ID="HiddenFieldDatePicker" runat="server" />
 
 
@@ -57,6 +57,9 @@
             <asp:Button ID="BtnRegister" runat="server" Text="Register" CssClass="button" OnClick="BtnRegister_Click"/> 
              <br />
              <asp:Label ID="ErorMsg1" runat="server" Text="" ForeColor="#FF3300"></asp:Label>
+
+
+    
         </div>
     </form>
 </body>

@@ -14,6 +14,12 @@ namespace Posyandu
     
     public partial class orangtua
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public orangtua()
+        {
+            this.balitas = new HashSet<balita>();
+        }
+    
         public string NIK { get; set; }
         public string namaOrangtua { get; set; }
         public string noTelp { get; set; }
@@ -23,5 +29,7 @@ namespace Posyandu
     
         public virtual balita balita { get; set; }
         public virtual userAccount userAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<balita> balitas { get; set; }
     }
 }
