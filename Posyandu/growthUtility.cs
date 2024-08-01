@@ -7,7 +7,7 @@ namespace Posyandu.Utilities
 {
     public class growthUtility
     {
-        private Dictionary<int, (double Median, double PlusOneSD, double MinusOneSD)> growthDataMale = new Dictionary<int, (double, double, double)>
+        private Dictionary<int, (double Median, double PlusOneSD, double MinusOneSD)> growthDataHeightMale = new Dictionary<int, (double, double, double)>
         {
             {0, (49.9, 51.8, 48.0)},
             {1, (54.7, 56.7, 52.8)},
@@ -74,8 +74,74 @@ namespace Posyandu.Utilities
 
         };
 
+                private Dictionary<int, (double Median, double PlusOneSD, double MinusOneSD)> growthDataWeightMale = new Dictionary<int, (double, double, double)>
+        {
+            {0, (3.3, 3.9, 2.9)},
+            {1, (4.5, 5.1, 3.9)},
+            {2, (5.6, 6.3, 4.9)},
+            {3, (6.4, 7.2, 5.7)},
+            {4, (7.0, 7.8, 6.2)},
+            {5, (7.5, 8.4, 6.7)},
+            {6, (7.9, 8.8, 7.1)},
+            {7, (8.3, 9.2, 7.4)},
+            {8, (8.6, 9.6, 7.7)},
+            {9, (8.9, 9.9, 8.0)},
+            {10, (9.2, 10.2, 8.2)},
+            {11, (9.4, 10.5, 8.4)},
+            {12, (9.6, 10.8, 8.6)},
+            {13, (9.9, 11.0, 8.8)},
+            {14, (10.1, 11.3, 9.0)},
+            {15, (10.3, 11.5, 9.2)},
+            {16, (10.5, 11.7, 9.4)},
+            {17, (10.7, 12.0, 9.6)},
+            {18, (10.9, 12.2, 9.8)},
+            {19, (11.1, 12.5, 10.0)},
+            {20, (11.3, 12.7, 10.1)},
+            {21, (11.5, 12.9, 10.3)},
+            {22, (11.8, 13.2, 10.5)},
+            {23, (12.0, 13.4, 10.7)},
+            {24, (12.2, 13.6, 10.8)},
+            {25, (12.4, 13.9, 11.0)},
+            {26, (12.5, 14.1, 11.2)},
+            {27, (12.7, 14.3, 11.3)},
+            {28, (12.9, 14.5, 11.5)},
+            {29, (13.1, 14.8, 11.7)},
+            {30, (13.3, 15.0, 11.8)},
+            {31, (13.5, 15.2, 12.0)},
+            {32, (13.7, 15.4, 12.1)},
+            {33, (13.8, 15.6, 12.3)},
+            {34, (14.0, 15.8, 12.4)},
+            {35, (14.2, 16.0, 12.6)},
+            {36, (14.3, 16.2, 12.7)},
+            {37, (14.5, 16.4, 12.9)},
+            {38, (14.7, 16.6, 13.0)},
+            {39, (14.8, 16.8, 13.1)},
+            {40, (15.0, 17.0, 13.3)},
+            {41, (15.2, 17.2, 13.4)},
+            {42, (15.3, 17.4, 13.6)},
+            {43, (15.5, 17.6, 13.7)},
+            {44, (15.7, 17.8, 13.8)},
+            {45, (15.8, 18.0, 14.0)},
+            {46, (16.0, 18.2, 14.1)},
+            {47, (16.2, 18.4, 14.3)},
+            {48, (16.3, 18.6, 14.4)},
+            {49, (16.5, 18.8, 14.5)},
+            {50, (16.7, 19.0, 14.7)},
+            {51, (16.8, 19.2, 14.8)},
+            {52, (17.0, 19.4, 15.0)},
+            {53, (17.2, 19.6, 15.1)},
+            {54, (17.3, 19.8, 15.2)},
+            {55, (17.5, 20.0, 15.4)},
+            {56, (17.7, 20.2, 15.5)},
+            {57, (17.8, 20.4, 15.6)},
+            {58, (18.0, 20.6, 15.8)},
+            {59, (18.2, 20.8, 15.9)},
+            {60, (18.3, 21.0, 16.0)}
+        };
+
+
         // Dictionary to store the growth data for females (perempuan)
-        private Dictionary<int, (double Median, double PlusOneSD, double MinusOneSD)> growthDataFemale = new Dictionary<int, (double, double, double)>
+        private Dictionary<int, (double Median, double PlusOneSD, double MinusOneSD)> growthDataFemaleHeight = new Dictionary<int, (double, double, double)>
         {
             // Data points for female growth
             { 0, (49.1, 51.0, 47.3) },
@@ -141,9 +207,74 @@ namespace Posyandu.Utilities
             { 60, (109.4, 114.2, 104.7) }
             // Add more data points as needed
         };
-        public (double? zScore, string classification) CalculateZScoreAndClassification(int ageMonths, double height, string gender)
+
+        private Dictionary<int, (double MinusTwoSD, double Median, double PlusTwoSD)> growthDataFemaleWeight = new Dictionary<int, (double, double, double)>
         {
-            Dictionary<int, (double, double, double)> selectedGrowthData = gender == "laki-laki" ? growthDataMale : growthDataFemale;
+            { 0, (2.4, 3.2, 4.2) },
+            { 1, (3.2, 4.2, 5.5) },
+            { 2, (3.9, 5.1, 6.6) },
+            { 3, (4.5, 5.8, 7.5) },
+            { 4, (5.0, 6.4, 8.2) },
+            { 5, (5.4, 6.9, 8.8) },
+            { 6, (5.7, 7.3, 9.3) },
+            { 7, (6.0, 7.6, 9.8) },
+            { 8, (6.3, 7.9, 10.2) },
+            { 9, (6.5, 8.2, 10.5) },
+            { 10, (6.7, 8.5, 10.9) },
+            { 11, (6.9, 8.7, 11.2) },
+            { 12, (7.0, 8.9, 11.5) },
+            { 13, (7.2, 9.2, 11.8) },
+            { 14, (7.4, 9.4, 12.1) },
+            { 15, (7.6, 9.6, 12.4) },
+            { 16, (7.7, 9.8, 12.6) },
+            { 17, (7.9, 10.0, 12.9) },
+            { 18, (8.1, 10.2, 13.2) },
+            { 19, (8.2, 10.4, 13.5) },
+            { 20, (8.4, 10.6, 13.7) },
+            { 21, (8.6, 10.9, 14.0) },
+            { 22, (8.7, 11.1, 14.3) },
+            { 23, (8.9, 11.3, 14.6) },
+            { 24, (9.0, 11.5, 14.8) },
+            { 25, (9.2, 11.7, 15.1) },
+            { 26, (9.4, 11.9, 15.4) },
+            { 27, (9.5, 12.1, 15.7) },
+            { 28, (9.7, 12.3, 16.0) },
+            { 29, (9.8, 12.5, 16.2) },
+            { 30, (10.0, 12.7, 16.5) },
+            { 31, (10.1, 12.9, 16.8) },
+            { 32, (10.3, 13.1, 17.1) },
+            { 33, (10.4, 13.3, 17.3) },
+            { 34, (10.5, 13.5, 17.6) },
+            { 35, (10.7, 13.7, 17.9) },
+            { 36, (10.8, 13.9, 18.1) },
+            { 37, (10.9, 14.0, 18.4) },
+            { 38, (11.1, 14.2, 18.7) },
+            { 39, (11.2, 14.4, 19.0) },
+            { 40, (11.3, 14.6, 19.2) },
+            { 41, (11.5, 14.8, 19.5) },
+            { 42, (11.6, 15.0, 19.8) },
+            { 43, (11.7, 15.2, 20.1) },
+            { 44, (11.8, 15.3, 20.4) },
+            { 45, (12.0, 15.5, 20.7) },
+            { 46, (12.1, 15.7, 20.9) },
+            { 47, (12.2, 15.9, 21.2) },
+            { 48, (12.3, 16.1, 21.5) },
+            { 49, (12.4, 16.3, 21.8) },
+            { 50, (12.6, 16.4, 22.1) },
+            { 51, (12.7, 16.6, 22.4) },
+            { 52, (12.8, 16.8, 22.6) },
+            { 53, (12.9, 17.0, 22.9) },
+            { 54, (13.0, 17.2, 23.2) },
+            { 55, (13.2, 17.3, 23.5) },
+            { 56, (13.3, 17.5, 23.8) },
+            { 57, (13.4, 17.7, 24.1) },
+            { 58, (13.5, 17.9, 24.4) },
+            { 59, (13.6, 18.0, 24.6) },
+            { 60, (13.7, 18.2, 24.9) }
+        };
+        public (double? zScore, string classification) CalculateZScoreAndClassificationHeight(int ageMonths, double height, string gender)
+        {
+            Dictionary<int, (double, double, double)> selectedGrowthData = gender == "laki-laki" ? growthDataHeightMale : growthDataFemaleHeight;
 
             if (selectedGrowthData.ContainsKey(ageMonths))
             {
@@ -167,6 +298,42 @@ namespace Posyandu.Utilities
                 else
                 {
                     classification = "Tinggi (tall)";
+                }
+
+                return (zScore, classification);
+            }
+            else
+            {
+                return (null, "Age not in range");
+            }
+        }
+
+        public (double? zScore, string classification) CalculateZScoreAndClassificationWeight(int ageMonths, double weight, string gender)
+        {
+            Dictionary<int, (double, double, double)> selectedGrowthData = gender == "laki-laki" ? growthDataWeightMale : growthDataFemaleWeight;
+
+            if (selectedGrowthData.ContainsKey(ageMonths))
+            {
+                var (median, plusOneSD, minusOneSD) = selectedGrowthData[ageMonths];
+                double sd = (plusOneSD - minusOneSD) / 2;
+                double zScore = (weight - median) / sd;
+
+                string classification;
+                if (zScore < -3)
+                {
+                    classification = "Berat badan sangat kurang";
+                }
+                else if (zScore >= -3 && zScore < -2)
+                {
+                    classification = "berat badan kurang";
+                }
+                else if (zScore >= -2 && zScore <= 3)
+                {
+                    classification = "Normal";
+                }
+                else
+                {
+                    classification = "berat badan lebih";
                 }
 
                 return (zScore, classification);

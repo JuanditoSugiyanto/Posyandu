@@ -58,9 +58,9 @@ namespace Posyandu.AfterLoginKader
                     b.beratBadan,
                     b.tinggiBadan,
                     statusGizi = (b.tinggiBadan == null || b.tinggiBadan == 0) ? "" :
-                    utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).classification,
+                    utility.CalculateZScoreAndClassificationHeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).classification,
                     zScore = (b.tinggiBadan == null || b.tinggiBadan == 0) ? (double?)null :
-                    Math.Round(utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2),
+                    Math.Round(utility.CalculateZScoreAndClassificationHeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2),
                     b.namaOrangtua
                 }).ToList();
 

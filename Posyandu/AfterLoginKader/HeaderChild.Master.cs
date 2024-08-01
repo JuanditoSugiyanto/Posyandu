@@ -31,6 +31,9 @@ namespace Posyandu.AfterLoginKader
             if (!string.IsNullOrEmpty(nik))
             {
                 LinkPenimbangan.NavigateUrl = $"ControlPenimbangan.aspx?NIK={nik}";
+                LinkGigi.NavigateUrl = $"ControlGigi.aspx?NIK={nik}";
+                LinkCacing.NavigateUrl = $"ControlCacing.aspx?NIK={nik}";
+                LinkVitamin.NavigateUrl= $"ControlVitamin.aspx?NIK={nik}";
             }
         }
     }

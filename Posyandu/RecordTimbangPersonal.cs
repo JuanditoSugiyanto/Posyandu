@@ -17,7 +17,7 @@ namespace Posyandu
         public string NIK { get; set; }
         public string namaAnak { get; set; }
         public System.DateTime Tanggal_Timbang { get; set; }
-        public int Berat_Badan { get; set; }
+        public Nullable<double> Berat_Badan { get; set; }
         public Nullable<double> Tinggi_Badan { get; set; }
         public string Status_Gizi { get; set; }
     

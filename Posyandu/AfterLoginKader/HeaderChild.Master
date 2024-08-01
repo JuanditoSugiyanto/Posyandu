@@ -36,11 +36,14 @@
                         <li>
                             <img src="../Content/pngwing%201.png" style="width: 37px" class="logoNav" /><a href="WebForm1Kader.aspx" style="font-weight: bold; font-size: 15pt;">Halaman Utama</a></li>
                         <li>
-                            <img src="../Content/clipboard-55-512.png" style="width: 36px; height: 33px" class="logoNav"/> <asp:HyperLink ID="LinkPenimbangan" runat="server" NavigateUrl='<%# Eval("NIK", "ControlPenimbangan.aspx?NIK={0}") %>' Text='<%# Eval("namaAnak") %>'>Penimbangan</asp:HyperLink></li>
+                            <img src="../Content/pngwing%202.png" style="width: 36px; height: 33px" class="logoNav"/> <asp:HyperLink ID="LinkPenimbangan" runat="server" NavigateUrl='<%# Eval("NIK", "ControlPenimbangan.aspx?NIK={0}") %>' Text='<%# Eval("namaAnak") %>'>Penimbangan</asp:HyperLink></li>
                         <li>
-                            <img src="../Content/children-kids-icon.png" style="width: 36px; height: 29px" class="logoNav"/><a href="#" style="font-weight: bold; font-size: 15pt;">Kesehatan Gigi</a></li>
+                            <img src="../Content/children-kids-icon.png" style="width: 36px; height: 29px" class="logoNav"/><asp:HyperLink ID="LinkGigi" runat="server" NavigateUrl='<%# Eval("NIK", "ControlGigi.aspx?NIK={0}") %>' Text='<%# Eval("namaAnak") %>'>Kesehatan Gigi</asp:HyperLink></li>
                         <li>
-                            <img src="../Content/kisspng-vector-graphics-computer-icons-encapsulated-postsc-vector-newspaper-flat-transparent-amp-png-clipar-5cd0c069bf83a4.6129432115571846177845.png" style="height: 36px; width: 39px" class="logoNav"/><a href="#" style="font-weight: bold; height: 15px;" class="txtLaporanccd">Vitamin A</a></li>
+                            <img src="../Content/pngwing%209.png" style="height: 36px; width: 39px" class="logoNav"/><asp:HyperLink ID="LinkCacing" runat="server" NavigateUrl='<%# Eval("NIK", "ControlCacing.aspx?NIK={0}") %>' Text='<%# Eval("namaAnak") %>'>Obat Cacing</asp:HyperLink></li>
+                        <li>
+                            <img src="../Content/pngwing%2012.png" style="height: 36px; width: 39px" class="logoNav"/><asp:HyperLink ID="LinkVitamin" runat="server" NavigateUrl='<%# Eval("NIK", "ControlVitamin.aspx?NIK={0}") %>' Text='<%# Eval("namaAnak") %>'>Vitamin A</asp:HyperLink></li>
+                        
                     </ul>
                 </nav>
             </aside>

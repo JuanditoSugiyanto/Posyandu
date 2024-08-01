@@ -79,7 +79,7 @@ namespace Posyandu.AfterLoginKader
             db.SaveChanges();
 
             // Optionally, redirect to another page after saving
-            Response.Redirect("WebForm1Kader.aspx");
+            Response.Redirect("ControlGigi.aspx?NIK=" + nik);
         }
 
     }

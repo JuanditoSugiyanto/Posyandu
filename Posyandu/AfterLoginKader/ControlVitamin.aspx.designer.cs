@@ -11,70 +11,52 @@ namespace Posyandu.AfterLoginKader
 {
 
 
-    public partial class ControlAnak
+    public partial class ControlVitamin
     {
 
         /// <summary>
-        /// LblNamaAnak control.
+        /// LabelVitamin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNamaAnak;
+        protected global::System.Web.UI.WebControls.Label LabelVitamin;
 
         /// <summary>
-        /// LabelNama control.
+        /// CheckBoxMerah control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelNama;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxMerah;
 
         /// <summary>
-        /// LblNamaOrangTua control.
+        /// CheckBoxBiru control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNamaOrangTua;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxBiru;
 
         /// <summary>
-        /// LblOrtu control.
+        /// BtnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblOrtu;
+        protected global::System.Web.UI.WebControls.Button BtnSave;
 
         /// <summary>
-        /// ZScore control.
+        /// LabelError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ZScore;
-
-        /// <summary>
-        /// Chart1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
-
-        /// <summary>
-        /// Chart2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart2;
+        protected global::System.Web.UI.WebControls.Label LabelError;
     }
 }

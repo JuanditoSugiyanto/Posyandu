@@ -17,6 +17,9 @@
         <asp:TextBox runat="server" ID="TxtSearch" class="DaftarAnakTB" BorderStyle="Inset" Width="548px"></asp:TextBox>
         <asp:Button ID="BtnSearch" runat="server" Text="Search" OnClick="BtnSearch_Click" />
         <br />
+        <br />
+        <br />
+
          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
      <Columns>
          <asp:BoundField DataField="NIK" HeaderText="NIK" />

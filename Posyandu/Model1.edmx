@@ -16,7 +16,7 @@
           <Property Name="jenisKelamin" Type="varchar" MaxLength="10" />
           <Property Name="alamat" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="namaPosyandu" Type="varchar" MaxLength="255" />
-          <Property Name="beratBadan" Type="int" />
+          <Property Name="beratBadan" Type="float" />
           <Property Name="tinggiBadan" Type="float" />
           <Property Name="statusGizi" Type="varchar" MaxLength="255" />
           <Property Name="namaOrangtua" Type="varchar" MaxLength="100" />
@@ -92,7 +92,7 @@
           <Property Name="NIK" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="namaAnak" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Tanggal_Timbang" Type="date" Nullable="false" />
-          <Property Name="Berat_Badan" Type="int" Nullable="false" />
+          <Property Name="Berat_Badan" Type="float" />
           <Property Name="Tinggi_Badan" Type="float" />
           <Property Name="Status_Gizi" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
@@ -258,7 +258,7 @@
           <Property Name="jenisKelamin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="alamat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="namaPosyandu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="beratBadan" Type="Int32" />
+          <Property Name="beratBadan" Type="Double" />
           <Property Name="tinggiBadan" Type="Double" />
           <Property Name="statusGizi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="namaOrangtua" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -349,7 +349,7 @@
           <Property Name="NIK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="namaAnak" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tanggal_Timbang" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Berat_Badan" Type="Int32" Nullable="false" />
+          <Property Name="Berat_Badan" Type="Double" />
           <Property Name="Tinggi_Badan" Type="Double" />
           <Property Name="Status_Gizi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="balita" Relationship="Self.FK__RecordTimba__NIK__0D7A0286" FromRole="RecordTimbangPersonal" ToRole="balita" />

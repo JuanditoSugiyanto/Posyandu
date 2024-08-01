@@ -47,7 +47,7 @@ namespace Posyandu.AfterLoginOrtu
                             {
                                   b.NIK,
                                   b.namaAnak,
-                                  b.tanggalLahir,
+                                   tanggalLahir = b.tanggalLahir.ToString("yyyy-MM-dd"),
                                   b.umur,
                                   b.jenisKelamin,
                                   b.alamat,
@@ -55,11 +55,14 @@ namespace Posyandu.AfterLoginOrtu
                                   b.beratBadan,
                                   b.tinggiBadan,
                                   statusGizi = (b.tinggiBadan == null || b.tinggiBadan == 0) ? "" :
-                                  utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).classification,
-                                  zScore = (b.tinggiBadan == null || b.tinggiBadan == 0) ? (double?)null :
-                                  Math.Round(utility.CalculateZScoreAndClassification(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2),
-                                  b.NIK_OrangTua
-                              });
+                                  utility.CalculateZScoreAndClassificationHeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).classification,
+                                  zScoreTinggi = (b.tinggiBadan == null || b.tinggiBadan == 0) ? (double?)null :
+                                  Math.Round(utility.CalculateZScoreAndClassificationHeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2),
+                                  b.NIK_OrangTua,
+                                  zscoreBerat = Math.Round(utility.CalculateZScoreAndClassificationWeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2)
+                                  
+
+                            });
 
                 GridView1.DataSource = balitas.ToList();
                 GridView1.DataBind();

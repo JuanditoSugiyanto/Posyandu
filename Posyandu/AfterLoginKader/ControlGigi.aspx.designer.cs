@@ -11,79 +11,97 @@ namespace Posyandu.AfterLoginKader
 {
 
 
-    public partial class HeaderChild
+    public partial class ControlGigi
     {
 
         /// <summary>
-        /// head control.
+        /// LabelGigi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label LabelGigi;
 
         /// <summary>
-        /// form1 control.
+        /// CheckBoxYaKotor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxYaKotor;
 
         /// <summary>
-        /// LabelName control.
+        /// CheckBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelName;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
 
         /// <summary>
-        /// LinkPenimbangan control.
+        /// LabelGigiBerlubang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkPenimbangan;
+        protected global::System.Web.UI.WebControls.Label LabelGigiBerlubang;
 
         /// <summary>
-        /// LinkGigi control.
+        /// CheckBoxYaBerlubang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkGigi;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxYaBerlubang;
 
         /// <summary>
-        /// LinkCacing control.
+        /// CheckBox4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkCacing;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox4;
 
         /// <summary>
-        /// LinkVitamin control.
+        /// LabelGigiBersih control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkVitamin;
+        protected global::System.Web.UI.WebControls.Label LabelGigiBersih;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// CheckBoxYaBersih control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxYaBersih;
+
+        /// <summary>
+        /// CheckBox6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox6;
+
+        /// <summary>
+        /// BtnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSave;
     }
 }

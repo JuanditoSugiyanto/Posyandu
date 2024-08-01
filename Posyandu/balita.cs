@@ -30,7 +30,7 @@ namespace Posyandu
         public string jenisKelamin { get; set; }
         public string alamat { get; set; }
         public string namaPosyandu { get; set; }
-        public Nullable<int> beratBadan { get; set; }
+        public Nullable<double> beratBadan { get; set; }
         public Nullable<double> tinggiBadan { get; set; }
         public string statusGizi { get; set; }
         public string namaOrangtua { get; set; }

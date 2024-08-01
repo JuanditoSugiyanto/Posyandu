@@ -77,7 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AfterLoginKader\ControlAnak.aspx" />
+    <Content Include="AfterLoginKader\ControlCacing.aspx" />
+    <Content Include="AfterLoginKader\ControlGigi.aspx" />
     <Content Include="AfterLoginKader\ControlPenimbangan.aspx" />
+    <Content Include="AfterLoginKader\ControlVitamin.aspx" />
     <Content Include="AfterLoginKader\WebForm1Kader.aspx" />
     <Content Include="AfterLoginOrtu\DetaiAnak.aspx" />
     <Content Include="AfterLoginOrtu\TambahAnak.aspx" />
@@ -109,6 +112,9 @@
     <Content Include="Content\kisspng-vector-graphics-computer-icons-encapsulated-postsc-vector-newspaper-flat-transparent-amp-png-clipar-5cd0c069bf83a4.6129432115571846177845.png" />
     <Content Include="Content\milos .png" />
     <Content Include="Content\pngwing 1.png" />
+    <Content Include="Content\pngwing 12.png" />
+    <Content Include="Content\pngwing 2.png" />
+    <Content Include="Content\pngwing 9.png" />
     <Content Include="Content\Posyandu 2021 Logo %28PNG720p%29 - Vector69Com 1.png" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\styles2.css" />
@@ -148,12 +154,33 @@
     <Compile Include="AfterLoginKader\ControlAnak.aspx.designer.cs">
       <DependentUpon>ControlAnak.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AfterLoginKader\ControlCacing.aspx.cs">
+      <DependentUpon>ControlCacing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlCacing.aspx.designer.cs">
+      <DependentUpon>ControlCacing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlGigi.aspx.cs">
+      <DependentUpon>ControlGigi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlGigi.aspx.designer.cs">
+      <DependentUpon>ControlGigi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AfterLoginKader\ControlPenimbangan.aspx.cs">
       <DependentUpon>ControlPenimbangan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AfterLoginKader\ControlPenimbangan.aspx.designer.cs">
       <DependentUpon>ControlPenimbangan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlVitamin.aspx.cs">
+      <DependentUpon>ControlVitamin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginKader\ControlVitamin.aspx.designer.cs">
+      <DependentUpon>ControlVitamin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AfterLoginKader\HeaderChild.Master.cs">
       <DependentUpon>HeaderChild.Master</DependentUpon>
@@ -349,7 +376,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />-->
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

@@ -34,6 +34,18 @@
             <asp:Label ID="LblNamaReg" runat="server" Text="Nama"></asp:Label>
             <asp:TextBox ID="TxtName" runat="server" CssClass="input"></asp:TextBox>
 
+            <asp:Label ID="LblKota" runat="server" Text="Kota"></asp:Label>
+            <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" ></asp:DropDownList>
+
+            <asp:Label ID="LblKecamatan" runat="server" Text="Kecamatan"></asp:Label>
+            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged"></asp:DropDownList>
+
+            <br />
+            <br />
+            
+            <asp:Label ID="LblKelurahan" runat="server" Text="Kelurahan"></asp:Label>
+            <asp:DropDownList ID="DropDownList5" runat="server"></asp:DropDownList>
+
             <asp:Label ID="LblRW" runat="server" Text="RW"></asp:Label>
             <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
             <asp:Label ID="Label1" runat="server" Text="RT"></asp:Label>
