@@ -425,10 +425,21 @@ namespace Posyandu.AfterLoginKader
                 }
                 LabelNama.Text = anak.namaAnak;
                 LblOrtu.Text = anak.namaOrangtua;
+                LblUmurDB.Text = anak.umur.ToString();
+                LblNIK.Text = anak.NIK;
+                LblTinggi.Text = anak.tinggiBadan.ToString();
+                LblBerat.Text = anak.beratBadan.ToString();
+                LblJenisKelamin.Text = anak.jenisKelamin;
+                LblAlamat.Text = anak.alamat;
+      
+
                 growthUtility utility = new growthUtility();
                 string jenisKelamin = anak.jenisKelamin;
-                double? zScore = utility.CalculateZScoreAndClassificationHeight(anak.umur, Convert.ToDouble(anak.tinggiBadan), jenisKelamin).zScore;
+                double? zScore = utility.CalculateZScoreAndClassificationWeight(anak.umur, Convert.ToDouble(anak.beratBadan), jenisKelamin).zScore;
+                string statusGizi = (anak.tinggiBadan == null || anak.tinggiBadan == 0) ? "" :
+                    utility.CalculateZScoreAndClassificationWeight(anak.umur, Convert.ToDouble(anak.beratBadan), anak.jenisKelamin).classification;
 
+                LblStatus.Text = statusGizi;   
                 if (zScore.HasValue)
                 {
                     ZScore.Text = $"Z-score: {zScore.Value:F2}";
@@ -469,7 +480,7 @@ namespace Posyandu.AfterLoginKader
                     }
                     series2.Points.Last().Label = minus2SDWeightFemale.Last().Value.ToString("-2 SD");
                     series2.ChartType = SeriesChartType.Line; // Display only data points
-                    series2.Color = Color.Red;
+                    series2.Color = Color.Yellow;
                     series2.LegendText = "-2SD Height";
 
                     Series series3 = Chart1.Series.FindByName("Series3");
@@ -485,7 +496,7 @@ namespace Posyandu.AfterLoginKader
                     }
                     series3.Points.Last().Label = plus2SDWeightFemale.Last().Value.ToString("2 SD");
                     series3.ChartType = SeriesChartType.Line; // Display only data points
-                    series3.Color = Color.Red;
+                    series3.Color = Color.Yellow;
                     series3.LegendText = "+2SD Height";
 
 
@@ -517,12 +528,12 @@ namespace Posyandu.AfterLoginKader
 
                     series5.Points.Last().Label = minus3SDWeightFemale.Last().Value.ToString("3 SD");
                     series5.ChartType = SeriesChartType.Line;
-                    series5.Color = Color.Black;
+                    series5.Color = Color.Red;
                     series5.LegendText = "+3SD Height";
 
 
 
-
+                    
                     Series series6 = Chart1.Series.FindByName("Series6");
                     series6 = new Series("Series6");
                     series6.ChartType = SeriesChartType.Line;
@@ -535,7 +546,7 @@ namespace Posyandu.AfterLoginKader
 
                     series6.Points.Last().Label = plus1SDWeightFemale.Last().Value.ToString("1 SD");
                     series6.ChartType = SeriesChartType.Line;
-                    series6.Color = Color.Black;
+                    series6.Color = Color.Green;
                     series6.LegendText = "+1SD Height";
 
 
@@ -552,7 +563,7 @@ namespace Posyandu.AfterLoginKader
 
                     series7.Points.Last().Label = minus1SDWeightFemale.Last().Value.ToString("-1 SD");
                     series7.ChartType = SeriesChartType.Line;
-                    series7.Color = Color.Black;
+                    series7.Color = Color.Green;
                     series7.LegendText = "-1SD Height";
                 }
                 else
@@ -586,7 +597,7 @@ namespace Posyandu.AfterLoginKader
                     }
                     series2.Points.Last().Label = minus2SDWeightMale.Last().Value.ToString("-2 SD");
                     series2.ChartType = SeriesChartType.Line; // Display only data points
-                    series2.Color = Color.Red;
+                    series2.Color = Color.Yellow;
                     series2.LegendText = "-2SD Height";
 
                     Series series3 = Chart1.Series.FindByName("Series3");
@@ -602,7 +613,7 @@ namespace Posyandu.AfterLoginKader
                     }
                     series3.Points.Last().Label = plus2SDWeightMale.Last().Value.ToString("2 SD");
                     series3.ChartType = SeriesChartType.Line; // Display only data points
-                    series3.Color = Color.Red;
+                    series3.Color = Color.Yellow;
                     series3.LegendText = "+2SD Height";
 
 
@@ -634,7 +645,7 @@ namespace Posyandu.AfterLoginKader
 
                     series5.Points.Last().Label = minus3SDWeightMaleMale.Last().Value.ToString("-3 SD");
                     series5.ChartType = SeriesChartType.Line;
-                    series5.Color = Color.Black;
+                    series5.Color = Color.Red;
                     series5.LegendText = "-3SD Height";
 
 
@@ -652,7 +663,7 @@ namespace Posyandu.AfterLoginKader
 
                     series6.Points.Last().Label = plus1SDWeightMale.Last().Value.ToString("1 SD");
                     series6.ChartType = SeriesChartType.Line;
-                    series6.Color = Color.Black;
+                    series6.Color = Color.Green;
                     series6.LegendText = "+1SD Height";
 
 
@@ -669,7 +680,7 @@ namespace Posyandu.AfterLoginKader
 
                     series7.Points.Last().Label = minus1SDWeightMale.Last().Value.ToString("-1 SD");
                     series7.ChartType = SeriesChartType.Line;
-                    series7.Color = Color.Black;
+                    series7.Color = Color.Green;
                     series7.LegendText = "-1SD Height";
 
                 }
@@ -844,7 +855,7 @@ namespace Posyandu.AfterLoginKader
                 seriesChild.ChartType = SeriesChartType.Point;
                 seriesChild.MarkerStyle = MarkerStyle.Circle;
                 seriesChild.MarkerColor = Color.Blue;
-                seriesChild.MarkerSize = 10;
+                seriesChild.MarkerSize = 5;
                 Chart1.Series.Add(seriesChild);
 
                 // Add child data point

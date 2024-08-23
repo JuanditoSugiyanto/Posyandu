@@ -31,11 +31,11 @@
          <asp:BoundField DataField="tanggalLahir" HeaderText="Tanggal Lahir" />
          <asp:BoundField DataField="umur" HeaderText="Umur" />
          <asp:BoundField DataField="jenisKelamin" HeaderText="Jenis Kelamin" />
-         <asp:BoundField DataField="alamat" HeaderText="Alamat" />
-         <asp:BoundField DataField="namaPosyandu" HeaderText="Nama Posyandu" />
+         <asp:BoundField DataField="alamat" HeaderText="Alamat" />    
          <asp:BoundField DataField="beratBadan" HeaderText="Berat Badan" />
          <asp:BoundField DataField="tinggiBadan" HeaderText="Tinggi Badan" />
-         <asp:BoundField DataField="zScore" HeaderText="Z-Score" DataFormatString="{0:F2}" HtmlEncode="False" />
+         <asp:BoundField DataField="zScoreBerat" HeaderText="Z-ScoreBerat" DataFormatString="{0:F2}" HtmlEncode="False" />
+         <asp:BoundField DataField="zScoreTinggi" HeaderText="Z-ScoreTinggi" DataFormatString="{0:F2}" HtmlEncode="False" />
          <asp:BoundField DataField="statusGizi" HeaderText="Status Gizi" />
          <asp:BoundField DataField="NamaOrangTua" HeaderText="Nama Orang Tua" />
      </Columns>

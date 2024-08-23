@@ -47,19 +47,20 @@ namespace Posyandu.AfterLoginOrtu
                             {
                                   b.NIK,
                                   b.namaAnak,
-                                   tanggalLahir = b.tanggalLahir.ToString("yyyy-MM-dd"),
+                                   tanggalLahir = b.tanggalLahir.ToString("dd-MM-yyyy"),
                                   b.umur,
                                   b.jenisKelamin,
                                   b.alamat,
                                   b.namaPosyandu,
                                   b.beratBadan,
                                   b.tinggiBadan,
-                                  statusGizi = (b.tinggiBadan == null || b.tinggiBadan == 0) ? "" :
-                                  utility.CalculateZScoreAndClassificationHeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).classification,
+                                  statusGizi = (b.beratBadan == null || b.beratBadan == 0) ? "" :
+                                  utility.CalculateZScoreAndClassificationWeight(b.umur, Convert.ToDouble(b.beratBadan), b.jenisKelamin).classification,
                                   zScoreTinggi = (b.tinggiBadan == null || b.tinggiBadan == 0) ? (double?)null :
                                   Math.Round(utility.CalculateZScoreAndClassificationHeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2),
                                   b.NIK_OrangTua,
-                                  zscoreBerat = Math.Round(utility.CalculateZScoreAndClassificationWeight(b.umur, Convert.ToDouble(b.tinggiBadan), b.jenisKelamin).zScore ?? 0, 2)
+                                  zscoreBerat = (b.beratBadan == null || b.beratBadan == 0) ? (double?)null : 
+                                  Math.Round(utility.CalculateZScoreAndClassificationWeight(b.umur, Convert.ToDouble(b.beratBadan), b.jenisKelamin).zScore ?? 0, 2)
                                   
 
                             });

@@ -39,7 +39,7 @@ namespace Posyandu.AfterLoginKader
 
             DateTime tanggalPemeriksaan = DateTime.Today;
             double tinggiBadan = double.Parse(TxtTinggiBadan.Text); 
-            int beratBadan = int.Parse(TextBox2.Text); 
+            double beratBadan = double.Parse(TextBox2.Text); 
 
             // Save data to the database
             DatabasePsoyanduEntities db = new DatabasePsoyanduEntities();

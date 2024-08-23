@@ -83,6 +83,7 @@
     <Content Include="AfterLoginKader\ControlVitamin.aspx" />
     <Content Include="AfterLoginKader\WebForm1Kader.aspx" />
     <Content Include="AfterLoginOrtu\DetaiAnak.aspx" />
+    <Content Include="AfterLoginOrtu\RiwayatPenimbangan.aspx" />
     <Content Include="AfterLoginOrtu\TambahAnak.aspx" />
     <Content Include="AfterLoginOrtu\WebForm1Ortu.aspx" />
     <Content Include="App_Data\DatabasePsoyandu.mdf" />
@@ -110,6 +111,9 @@
     <Content Include="Content\clipboard-55-512.png" />
     <Content Include="Content\Group 27.png" />
     <Content Include="Content\kisspng-vector-graphics-computer-icons-encapsulated-postsc-vector-newspaper-flat-transparent-amp-png-clipar-5cd0c069bf83a4.6129432115571846177845.png" />
+    <Content Include="Content\Legend Graph POsyandu 2.png" />
+    <Content Include="Content\Legend Graph Posyandu.png" />
+    <Content Include="Content\Legend Posyandu 2.svg" />
     <Content Include="Content\milos .png" />
     <Content Include="Content\pngwing 1.png" />
     <Content Include="Content\pngwing 12.png" />
@@ -210,12 +214,26 @@
     <Compile Include="AfterLoginOrtu\DetaiAnak.aspx.designer.cs">
       <DependentUpon>DetaiAnak.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AfterLoginOrtu\HeaderChildOrtu.Master.cs">
+      <DependentUpon>HeaderChildOrtu.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginOrtu\HeaderChildOrtu.Master.designer.cs">
+      <DependentUpon>HeaderChildOrtu.Master</DependentUpon>
+    </Compile>
     <Compile Include="AfterLoginOrtu\HeaderOrtu.Master.cs">
       <DependentUpon>HeaderOrtu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AfterLoginOrtu\HeaderOrtu.Master.designer.cs">
       <DependentUpon>HeaderOrtu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AfterLoginOrtu\RiwayatPenimbangan.aspx.cs">
+      <DependentUpon>RiwayatPenimbangan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfterLoginOrtu\RiwayatPenimbangan.aspx.designer.cs">
+      <DependentUpon>RiwayatPenimbangan.aspx</DependentUpon>
     </Compile>
     <Compile Include="AfterLoginOrtu\TambahAnak.aspx.cs">
       <DependentUpon>TambahAnak.aspx</DependentUpon>
@@ -353,6 +371,7 @@
     <Content Include="AfterLoginKader\HeaderKader.Master" />
     <Content Include="NewFolder1\Site1.Master" />
     <Content Include="AfterLoginKader\HeaderChild.Master" />
+    <Content Include="AfterLoginOrtu\HeaderChildOrtu.Master" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />

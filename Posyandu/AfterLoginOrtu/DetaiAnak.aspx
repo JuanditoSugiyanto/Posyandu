@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AfterLoginOrtu/HeaderOrtu.Master" AutoEventWireup="true" CodeBehind="DetaiAnak.aspx.cs" Inherits="Posyandu.AfterLoginOrtu.DetaiAnak" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AfterLoginOrtu/HeaderChildOrtu.Master" AutoEventWireup="true" CodeBehind="DetaiAnak.aspx.cs" Inherits="Posyandu.AfterLoginOrtu.DetaiAnak" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 
@@ -38,6 +38,13 @@
      </ChartAreas>
  </asp:Chart>
    <br />
+      <img src="../Content/Legend%20Graph%20Posyandu.png"/>
+  <br />
+  <asp:Label ID="Label1" runat="server" Text="Grafik Berdasarkan PMK No.2 Tahun 2020 tentang Standar Antoropometri Anak"></asp:Label>
+  <br />
+  <br />
+  <br />
+  <br />
    <!------------------------------------------------------------>
     <asp:Chart ID="Chart2" runat="server" Width="1000px" Height="700px">
     <Series>
@@ -60,5 +67,8 @@
         </asp:ChartArea>
     </ChartAreas>
 </asp:Chart>
-
+    <br />
+<br />
+    <img src="../Content/Legend%20Graph%20POsyandu%202.png" />
+    <asp:Label ID="Label2" runat="server" Text="Grafik Berdasarkan PMK No.2 Tahun 2020 tentang Standar Antoropometri Anak"></asp:Label>
 </asp:Content>

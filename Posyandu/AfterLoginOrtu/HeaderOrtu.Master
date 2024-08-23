@@ -35,9 +35,9 @@
                 <nav class="sidebar-nav">
                     <ul>
                         <li>
-                            <img src="../Content/pngwing%201.png" style="width: 37px" class="logoNav" /><a href="#" style="font-weight: bold; font-size: 15pt;">Halaman Utama</a></li>
+                            <img src="../Content/pngwing%201.png" style="width: 37px" class="logoNav" /><a href="WebForm1Ortu.aspx" style="font-weight: bold; font-size: 15pt;">Halaman Utama</a></li>
                         <li>
-                            <img src="../Content/clipboard-55-512.png" style="width: 36px; height: 33px" class="logoNav"/><a href="#" style="font-weight: bold; font-size: 15pt;">Daftar Hadir Kader</a></li>
+                            <img src="../Content/clipboard-55-512.png" style="width: 36px; height: 33px" class="logoNav"/><a href="#" style="font-weight: bold; font-size: 15pt;">Profil Saya</a></li>
                         <li>
                             <img src="../Content/children-kids-icon.png" style="width: 36px; height: 29px" class="logoNav"/><a href="#" style="font-weight: bold; font-size: 15pt;">Daftar Hadir Anak</a></li>
                         <li>
