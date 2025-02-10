@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,12 +21,12 @@ namespace Posyandu.AfterLoginKader
                 }
 
                 ViewState["NIK"] = nik; // Store NIK in ViewState for use later
+                LoadRiwayatPenimbangan(); // Load existing records on page load
             }
         }
 
         protected void BtnAddData_Click(object sender, EventArgs e)
         {
-
             string nik = ViewState["NIK"] as string;
             if (string.IsNullOrEmpty(nik))
             {
@@ -38,49 +36,99 @@ namespace Posyandu.AfterLoginKader
             }
 
             DateTime tanggalPemeriksaan = DateTime.Today;
-            double tinggiBadan = double.Parse(TxtTinggiBadan.Text); 
-            double beratBadan = double.Parse(TextBox2.Text); 
+            double tinggiBadan = double.Parse(TxtTinggiBadan.Text);
+            double beratBadan = double.Parse(TextBox2.Text);
 
-            // Save data to the database
-            DatabasePsoyanduEntities db = new DatabasePsoyanduEntities();
-            var anak = db.balitas.FirstOrDefault(b => b.NIK == nik);
-            if (anak != null)
+            using (DatabasePsoyanduEntities db = new DatabasePsoyanduEntities())
             {
-                anak.beratBadan = beratBadan;
-                anak.tinggiBadan = tinggiBadan;
-                var existingRecord = db.RecordTimbangPersonals.FirstOrDefault(r => r.NIK == nik && DbFunctions.TruncateTime(r.Tanggal_Timbang) == tanggalPemeriksaan.Date);
-
-
-                if (existingRecord != null)
+                var anak = db.balitas.FirstOrDefault(b => b.NIK == nik);
+                if (anak != null)
                 {
-                    // Update existing record
-                    existingRecord.Berat_Badan = beratBadan;
-                    existingRecord.Tinggi_Badan = tinggiBadan;
-                    existingRecord.Status_Gizi = "placeholder";
+                    anak.beratBadan = beratBadan;
+                    anak.tinggiBadan = tinggiBadan;
+
+                    var existingRecord = db.RecordTimbangPersonals.FirstOrDefault(r => r.NIK == nik && DbFunctions.TruncateTime(r.Tanggal_Timbang) == tanggalPemeriksaan.Date);
+
+                    if (existingRecord != null)
+                    {
+                        // Update existing record
+                        existingRecord.Berat_Badan = beratBadan;
+                        existingRecord.Tinggi_Badan = tinggiBadan;
+                        existingRecord.Status_Gizi = "placeholder"; // Update with actual logic for status gizi if available
+                    }
+                    else
+                    {
+                        // Create new record
+                        RecordTimbangPersonal newRecord = new RecordTimbangPersonal
+                        {
+                            NIK = nik,
+                            Tanggal_Timbang = tanggalPemeriksaan,
+                            Berat_Badan = beratBadan,
+                            Tinggi_Badan = tinggiBadan,
+                            namaAnak = anak.namaAnak,
+                            Status_Gizi = "placeholder" // Update with actual logic for status gizi if available
+                        };
+
+                        db.RecordTimbangPersonals.Add(newRecord);
+                    }
+
+                    db.SaveChanges();
                 }
-                else
-                {
-                    // Create new record
-                    RecordTimbangPersonal r = new RecordTimbangPersonal();
-                    r.NIK = nik;
-                    r.Tanggal_Timbang = tanggalPemeriksaan;
-                    r.Berat_Badan = beratBadan;
-                    r.Tinggi_Badan = tinggiBadan;
-                    r.namaAnak = anak.namaAnak;
-                    r.Status_Gizi = "placeholder";
-
-                    db.RecordTimbangPersonals.Add(r);
-                }
-
-
             }
 
-
-            db.SaveChanges();
-
-            // Optionally, redirect to another page after saving
-            Response.Redirect("ControlGigi.aspx?NIK=" + nik);
+            // Refresh GridView
+            LoadRiwayatPenimbangan();
         }
 
+        private void LoadRiwayatPenimbangan()
+        {
+            string nik = ViewState["NIK"] as string;
+            if (string.IsNullOrEmpty(nik)) return;
+
+            using (DatabasePsoyanduEntities db = new DatabasePsoyanduEntities())
+            {
+                var data = db.RecordTimbangPersonals
+                    .Where(r => r.NIK == nik)
+                    .OrderByDescending(r => r.Tanggal_Timbang)
+                    .Select(r => new
+                    {
+                        Tanggal = DbFunctions.TruncateTime(r.Tanggal_Timbang),
+                        TinggiBadan = r.Tinggi_Badan,
+                        BeratBadan = r.Berat_Badan,
+                        StatusGizi = r.Status_Gizi
+                    })
+                    .ToList();
+
+                GridViewRiwayatPenimbangan.DataSource = data;
+                GridViewRiwayatPenimbangan.DataBind();
+            }
+        }
+
+        protected void GridViewRiwayatPenimbangan_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string nik = ViewState["NIK"] as string;
+            if (string.IsNullOrEmpty(nik))
+            {
+                Response.Redirect("WebForm1Kader.aspx");
+                return;
+            }
+
+            // Ambil Tanggal dari baris yang akan dihapus
+            DateTime tanggalTimbang = Convert.ToDateTime(GridViewRiwayatPenimbangan.DataKeys[e.RowIndex].Values["Tanggal"]);
+
+            using (DatabasePsoyanduEntities db = new DatabasePsoyanduEntities())
+            {
+                // Cari record yang sesuai berdasarkan NIK dan Tanggal_Timbang
+                var record = db.RecordTimbangPersonals.FirstOrDefault(r => r.NIK == nik && DbFunctions.TruncateTime(r.Tanggal_Timbang) == tanggalTimbang.Date);
+                if (record != null)
+                {
+                    db.RecordTimbangPersonals.Remove(record);
+                    db.SaveChanges();
+                }
+            }
+
+            // Refresh GridView setelah menghapus data
+            LoadRiwayatPenimbangan();
+        }
     }
 }
